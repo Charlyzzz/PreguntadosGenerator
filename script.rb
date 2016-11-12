@@ -1,21 +1,15 @@
-require_relative './persona'
+require_relative './generator/generator'
+
+filename = 'data.sql'
+
+contenido = Categoria.all
+contenido += Jugador.all
+contenido += Pregunta.all
+
+competencias = Competencia.all
+
+contenido += competencias
 
 
-def personas_del_csv
-  personas = []
-  CSV.foreach('us-500.csv', headers: :first_row) do |row|
-    personas << Persona.new(row)
-  end
-  personas
-end
-
-def cantidad_competidores
-  [2,3,4,5].sample
-end
-
-def nueva_competencia(personas)
-  Competencia.new(personas)
-end
-
-
-
+File.delete(filename)
+File.write(filename, contenido.map(&:to_sql).reduce(:+))

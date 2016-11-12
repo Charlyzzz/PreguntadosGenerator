@@ -1,0 +1,6 @@
+require_relative './competencia'
+require_relative './jugador'
+require_relative './pregunta'
+require_relative './respuesta'
+require_relative './categoria'
+require_relative './log'
