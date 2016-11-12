@@ -4,7 +4,7 @@ class Competencia
   class << self
 
     def all
-      Array.new(500) { new }
+      @competiciones ||= Array.new(500) { new }
     end
 
   end
