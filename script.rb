@@ -5,11 +5,7 @@ filename = 'data.sql'
 contenido = Categoria.all
 contenido += Jugador.all
 contenido += Pregunta.all
+contenido += Competencia.all
+contenido += Competencia.all.map(&:jugar).flatten
 
-competencias = Competencia.all
-
-contenido += competencias
-
-
-File.delete(filename)
 File.write(filename, contenido.map(&:to_sql).reduce(:+))
